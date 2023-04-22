@@ -1,1 +1,1 @@
-The repo printf contains printf function that performs same way as usual prinf function decalare in stdio headerfile.
+This a printf project, a collaboration between Lawal Hammed Tunde and Augustus Atuaful and it performs same function as usual prinf function decalare in stdio headerfile.

@@ -9,6 +9,7 @@
 
 int _printf(const char *format, ...);
 int puchr(char c);
+int _putstrn(char *letter);
 
 
 

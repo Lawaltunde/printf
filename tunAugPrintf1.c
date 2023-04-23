@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _printf - function that produces output according
@@ -10,10 +11,9 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int w = 0, rtrn = 0, argcnt, len;
+	unsigned int w = 0, rtrn = 0;
 	va_list(argname);
 
-	char *argptr;
 	va_start(argname, format);
 	while (format[w] != '\0')
 	{
@@ -21,33 +21,28 @@ int _printf(const char *format, ...)
 			puchr(format[w]);
 		else
 			if (format[w + 1] == '%')
+			{
 				puchr('%');
+				w++;
+				rtrn -= 1;
+			}
 
 		else
 			if (format[w + 1] == 'c')
 			{
-				w++;
-				va_arg(argname, int);
-
 				puchr(va_arg(argname, int));
+				w++;
 			}
 		else
 			if (format[w + 1] == 's')
 			{
+				rtrn = _putstrn(va_arg(argname, char *));
 				w++;
-				va_arg(argname, char *);
-				len = strlen(va_arg(argname, char *));
-				argptr = va_arg(argname, char *);
-				for (argcnt = 0; argcnt < len; argcnt++)
-				{
-					puchr(argptr[argcnt]);
-				}
+				rtrn -= 1;
 			}
-
 		rtrn += 1;
 		w++;
 	}
 	va_end(argname);
 	return (rtrn);
 }
-

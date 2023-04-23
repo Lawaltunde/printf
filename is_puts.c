@@ -10,14 +10,13 @@ int _putstrn(char *letter)
 {
 	unsigned int i, val = 0;
 
-	if(letter)
+	if (letter)
 	{
 		for (i = 0; letter[i] != '\0'; i++)
 		{
 			puchr(letter[i]);
 			val += 1;
 		}
-		val;
 	}
 	return (val);
 }

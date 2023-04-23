@@ -12,6 +12,7 @@
 int _printf(const char *format, ...)
 {
 	unsigned int w = 0, rtrn = 0;
+
 	va_list(argname);
 
 	va_start(argname, format);

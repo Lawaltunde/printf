@@ -49,6 +49,7 @@ int _printf(const char *format, ...)
 		rtrn += 1;
 		w++;
 	}
+	va_end(argname);
 	return (rtrn);
 }
 

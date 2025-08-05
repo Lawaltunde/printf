@@ -42,6 +42,8 @@ int main(void)
     return (0);
 }
 
+```
+---
 
 ## 🚀 Additional  Features
 
@@ -51,6 +53,7 @@ int main(void)
 - Uses variadic functions (`stdarg.h`)
 - Outputs characters using `write` syscall only
 
+---
 ## 📦 Supported Format Specifiers
 
 | Specifier | Description                  |
@@ -67,6 +70,7 @@ int main(void)
 | `%r`      | Reversed string (custom)     |
 | `%R`      | ROT13 string (custom)        |
 
+---
 ## 🧪 Coding Standards
 
 - All files follow the **Betty style guide**
@@ -77,7 +81,7 @@ int main(void)
   - `write`
   - `malloc`, `free`
   - `va_start`, `va_end`, `va_copy`, `va_arg`
-
+---
 ## 👥 Authors
 
 - **Lawal Hammed Tunde** – 

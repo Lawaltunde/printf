@@ -6,7 +6,7 @@
   */
 int _printf(const char *format, ...)
 {
-	int i = 0, length = 0, holder = 0, (*fptr)(va_list, char *);
+	int i, length = 0, holder = 0, (*fptr)(va_list, char *);
 	char *buffer, *bufferPointer;
 	va_list args;
 
@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	bufferPointer = buffer;
 	va_start(args, format);
-	while (format[i])
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -40,12 +40,10 @@ int _printf(const char *format, ...)
 		}
 		*buffer++ = format[i];
 		length++;
-		i++;
 	}
 	va_end(args);
 	if (length > 0)
 		write(1, bufferPointer, length);
-
 	free(bufferPointer);
 	return (length);
 }

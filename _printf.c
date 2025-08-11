@@ -8,8 +8,9 @@
 
 int _printf(const char *format, ...)
 {
-	int i, length = 0, holder = 0, (*fptr)(va_list, char *);
-	char *buffer, *bufferPointer;
+	int i, length = 0, pos = 0;
+	int (*fptr)(va_list, char *, int *);
+	char *buffer;
 	va_list args;
 
 	if (!format)
@@ -19,7 +20,6 @@ int _printf(const char *format, ...)
 	if (buffer == NULL)
 		return (-1);
 
-	bufferPointer = buffer;
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -27,25 +27,31 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == '\0')
 			{
-				length = -1;
-				break;
+				free(buffer);
+				va_end(args);
+				return (-1);
 			}
+
 			fptr = specifierChecks(format[i + 1]);
 			if (fptr)
 			{
 				i++;
-				holder = fptr(args, buffer);
-				buffer += holder;
-				length += holder;
+				fptr(args, buffer, &pos);
+				continue;
+			}
+			else
+			{
+				buffer[pos++] = '%';
+				buffer[pos++] = format[i + 1];
+				i++;
 				continue;
 			}
 		}
-		*buffer++ = format[i];
-		length++;
+		buffer[pos++] = format[i];
 	}
 	va_end(args);
-	if (length > 0)
-		write(1, bufferPointer, length);
-	free(bufferPointer);
+	write(1, buffer, pos);
+	length = pos;
+	free(buffer);
 	return (length);
 }

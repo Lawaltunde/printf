@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
   * _printf - replicate function of printf, it print all
   * @format: pointer to char
   * Return: length of the argument passed or zero if none
   */
+
 int _printf(const char *format, ...)
 {
 	int i, length = 0, holder = 0, (*fptr)(va_list, char *);
@@ -19,7 +21,7 @@ int _printf(const char *format, ...)
 
 	bufferPointer = buffer;
 	va_start(args, format);
-	for (i = 0; format[i]; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -28,7 +30,7 @@ int _printf(const char *format, ...)
 				length = -1;
 				break;
 			}
-			fptr = specifierChecks(format + i + 1);
+			fptr = specifierChecks(format[i + 1]);
 			if (fptr)
 			{
 				i++;

@@ -45,6 +45,20 @@ int main(void)
 ```
 ---
 
+## Testing the _printf Implementation
+
+To test the `_printf` function, place above code in your `main.c` file. Then compile all your source files with:
+
+```bash
+gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c -o my_printf
+
+```
+```
+./my_printf
+
+```
+---
+
 ## 🚀 Additional  Features
 
 - Handles standard format specifiers: `%c`, `%s`, `%d`, `%i`, `%u`, `%o`, `%x`, `%X`, and `%%`
